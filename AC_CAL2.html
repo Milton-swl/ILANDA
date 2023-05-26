@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Air Conditioner Calculator</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      background-color: #282c34;
+      color: #ffffff;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .calculator-block {
+      background-color: #35404c;
+      padding: 30px;
+      border-radius: 4px;
+    }
+
+    .calculator {
+      width: 80%;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    h2 {
+      color: #61afef;
+      font-family: "Arial", sans-serif;
+      text-align: center;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+      font-family: "Arial", sans-serif;
+    }
+
+    input[type="number"] {
+      width: 100px;
+    }
+
+    button {
+      margin-top: 10px;
+      background-color: #61afef;
+      color: #ffffff;
+      border: none;
+      padding: 8px 16px;
+      font-size: 16px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #5391c8;
+    }
+
+    #result {
+      margin-top: 20px;
+      font-weight: bold;
+      font-family: "Arial", sans-serif;
+      text-align: center;
+    }
+
+    #website-link {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    #website-link a {
+      color: #61afef;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="calculator-block">
+    <div class="calculator">
+      <h2>Air Conditioner Size Calculator</h2>
+      <form id="calculatorForm">
+        <label for="length">Room Length (in meters):</label>
+        <input type="number" id="length" step="0.01" required>
+        <label for="width">Room Width (in meters):</label>
+        <input type="number" id="width" step="0.01" required>
+        <button type="button" onclick="calculateACSize()">Calculate</button>
+      </form>
+      <div id="result"></div>
+      <div id="website-link">
+        <a href="https://www.ilandahvac.co.za">www.ilandahvac.co.za</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function calculateACSize() {
+      var length = parseFloat(document.getElementById('length').value);
+      var width = parseFloat(document.getElementById('width').value);
+      var area = length * width;
+      var watt = 210 * area;
+      var btu = watt * 3.412142;
+      var roundedBTU = Math.ceil(btu / 1000) * 1000; // Round up to the nearest thousand
+      var selectedBTU = Math.max(roundedBTU, 9000); // Select the larger of the rounded BTU or the minimum size (9000 BTU)
+      document.getElementById('result').textContent = "Required Air Conditioner Size: " + selectedBTU + " BTU";
+      document.getElementById('website-link').style.display = "block";
+    }
+  </script>
+</body>
+</html>
