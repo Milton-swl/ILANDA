@@ -18,11 +18,12 @@
       background-color: #35404c;
       padding: 30px;
       border-radius: 4px;
+      width: 98%; /* Updated width to occupy 98% of the screen */
+      max-width: 800px; /* Increased max-width for larger screens */
     }
 
     .calculator {
-      width: 80%;
-      max-width: 600px;
+      width: 100%; /* Set the calculator width to 100% of its container */
       margin: 0 auto;
     }
 
@@ -30,6 +31,7 @@
       color: #61afef;
       font-family: "Arial", sans-serif;
       text-align: center;
+      margin-top: 0; /* Remove default margin-top */
     }
 
     label {
@@ -78,6 +80,7 @@
 <body>
   <div class="calculator-block">
     <div class="calculator">
+      <h2>ILANDA HVAC (PTY) LTD</h2> <!-- Company name added here -->
       <h2>Air Conditioner Size Calculator</h2>
       <form id="calculatorForm">
         <label for="length">Room Length (in meters):</label>
